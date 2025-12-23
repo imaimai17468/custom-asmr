@@ -19,7 +19,7 @@ export const Header = () => {
 				</Link>
 				<div className="flex items-center gap-4">
 					<a
-						href="https://github.com"
+						href="https://github.com/imaimai17468/custom-asmr"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-muted-foreground text-sm transition-colors hover:text-foreground"
