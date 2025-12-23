@@ -2,11 +2,11 @@
 
 import { AlertCircle } from "lucide-react";
 import { useCallback, useState } from "react";
-import { AudioControls } from "@/components/features/audio-controls/AudioControls";
-import { PositionPad } from "@/components/features/position-pad/PositionPad";
-import { YouTubePlayer } from "@/components/features/youtube-player/YouTubePlayer";
 import { useSpatialAudio } from "@/hooks/use-spatial-audio";
 import { useTabAudioCapture } from "@/hooks/use-tab-audio-capture";
+import { AudioControls } from "./audio-controls/AudioControls";
+import { PositionPad } from "./position-pad/PositionPad";
+import { YouTubePlayer } from "./youtube-player/YouTubePlayer";
 
 /**
  * Custom ASMRのメインプレイヤーコンポーネント
