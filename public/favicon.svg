@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+  </defs>
+  <!-- 背景 -->
+  <rect width="32" height="32" rx="6" fill="url(#grad)"/>
+  <!-- ヘッドフォン -->
+  <path d="M8 18v4a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1a2 2 0 0 1-2-2v-2a6 6 0 1 1 12 0v2a2 2 0 0 1-2 2h-1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1a2 2 0 0 0 2-2v-4" 
+        fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- 音波（右） -->
+  <path d="M24 13c1 1.5 1 4 0 6" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M27 11c1.5 2.5 1.5 7.5 0 10" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+</svg>
+

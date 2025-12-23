@@ -8,6 +8,9 @@ export const metadata: Metadata = {
 	title: "Custom ASMR - YouTube 3D空間音響プレイヤー",
 	description:
 		"YouTubeの動画を3D音響に変換。音源の位置を自由にコントロールして、没入感のある体験を。",
+	icons: {
+		icon: "/favicon.svg",
+	},
 };
 
 export default function RootLayout({
