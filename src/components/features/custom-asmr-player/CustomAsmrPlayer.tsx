@@ -1,12 +1,15 @@
 "use client";
 
 import { AlertCircle } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { AudioControls } from "./audio-controls/AudioControls";
 import { useSpatialAudio } from "./hooks/use-spatial-audio";
 import { useTabAudioCapture } from "./hooks/use-tab-audio-capture";
 import { PositionPad } from "./position-pad/PositionPad";
-import { YouTubePlayer } from "./youtube-player/YouTubePlayer";
+import {
+	YouTubePlayer,
+	type YouTubePlayerHandle,
+} from "./youtube-player/YouTubePlayer";
 
 /**
  * Custom ASMRのメインプレイヤーコンポーネント
@@ -16,6 +19,7 @@ import { YouTubePlayer } from "./youtube-player/YouTubePlayer";
  */
 export function CustomAsmrPlayer() {
 	const [_isPlayerReady, setIsPlayerReady] = useState(false);
+	const playerRef = useRef<YouTubePlayerHandle>(null);
 
 	// タブ音声キャプチャ
 	const {
@@ -57,6 +61,9 @@ export function CustomAsmrPlayer() {
 		disconnectStream();
 		stopCapture();
 		cleanup();
+
+		// YouTube側の音量を元に戻す
+		playerRef.current?.setVolume(100);
 	}, [disconnectStream, stopCapture, cleanup]);
 
 	// 音源位置を更新
@@ -97,7 +104,7 @@ export function CustomAsmrPlayer() {
 			<section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-2">
 				{/* 左カラム: YouTube プレイヤー */}
 				<div className="space-y-6">
-					<YouTubePlayer onPlayerReady={handlePlayerReady} />
+					<YouTubePlayer ref={playerRef} onPlayerReady={handlePlayerReady} />
 				</div>
 
 				{/* 右カラム: コントロール */}

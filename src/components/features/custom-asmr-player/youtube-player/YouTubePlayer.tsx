@@ -1,10 +1,24 @@
 "use client";
 
 import { Loader2, Pause, Play } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+	forwardRef,
+	useCallback,
+	useEffect,
+	useImperativeHandle,
+	useRef,
+	useState,
+} from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+
+// YouTubeプレイヤーの外部制御用ハンドル
+export interface YouTubePlayerHandle {
+	mute: () => void;
+	unmute: () => void;
+	setVolume: (volume: number) => void;
+}
 
 // YouTube URLからビデオIDを抽出する
 function extractVideoId(url: string): string | null {
@@ -41,10 +55,10 @@ interface YouTubePlayerProps {
 	className?: string;
 }
 
-export function YouTubePlayer({
-	onPlayerReady,
-	className,
-}: YouTubePlayerProps) {
+export const YouTubePlayer = forwardRef<
+	YouTubePlayerHandle,
+	YouTubePlayerProps
+>(function YouTubePlayer({ onPlayerReady, className }, ref) {
 	const [url, setUrl] = useState("");
 	const [videoId, setVideoId] = useState<string | null>(null);
 	const [status, setStatus] = useState<PlayerStatus>("idle");
@@ -53,6 +67,19 @@ export function YouTubePlayer({
 	const playerRef = useRef<YT.Player | null>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const apiLoadedRef = useRef(false);
+
+	// 外部から制御可能なメソッドを公開
+	useImperativeHandle(ref, () => ({
+		mute: () => {
+			playerRef.current?.mute();
+		},
+		unmute: () => {
+			playerRef.current?.unMute();
+		},
+		setVolume: (volume: number) => {
+			playerRef.current?.setVolume(volume);
+		},
+	}));
 
 	// YouTube IFrame APIを動的にロード
 	const loadYouTubeAPI = useCallback(() => {
@@ -258,10 +285,10 @@ export function YouTubePlayer({
 				{/* 注意書き */}
 				{videoId && (
 					<p className="text-muted-foreground text-xs">
-						※ 3D音響を使用する場合、YouTubeの音量は自動的に低く設定されます
+						※ 3D音響使用時はYouTubeの音量が自動的に下がります
 					</p>
 				)}
 			</CardContent>
 		</Card>
 	);
-}
+});

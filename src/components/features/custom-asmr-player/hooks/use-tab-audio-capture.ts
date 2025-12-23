@@ -87,15 +87,19 @@ export function useTabAudioCapture(): UseTabAudioCaptureResult {
 
 		try {
 			// getDisplayMediaで画面共有を要求
-			// audio: true で音声も取得
-			// video: true も必要（音声のみは一部ブラウザで非対応）
+			// suppressLocalAudioPlayback: true で共有タブの元音声を抑制
+			// Web Audio APIで処理した音声のみが出力される
 			const mediaStream = await navigator.mediaDevices.getDisplayMedia({
-				audio: true,
+				audio: {
+					// @ts-expect-error - suppressLocalAudioPlaybackはChrome固有のオプション
+					suppressLocalAudioPlayback: true,
+				},
 				video: true,
 			});
 
 			// 音声トラックを確認
 			const audioTracks = mediaStream.getAudioTracks();
+
 			if (audioTracks.length === 0) {
 				// 音声トラックがない場合
 				mediaStream.getTracks().forEach((track) => track.stop());
@@ -104,13 +108,6 @@ export function useTabAudioCapture(): UseTabAudioCaptureResult {
 				return null;
 			}
 
-			// ビデオトラックは不要なので停止（音声のみ使用）
-			const videoTracks = mediaStream.getVideoTracks();
-			videoTracks.forEach((track) => track.stop());
-
-			// 音声トラックのみの新しいストリームを作成
-			const audioOnlyStream = new MediaStream(audioTracks);
-
 			// トラック終了時のハンドリング（ユーザーが共有を停止した場合）
 			audioTracks[0].addEventListener("ended", () => {
 				setStatus("idle");
@@ -118,11 +115,12 @@ export function useTabAudioCapture(): UseTabAudioCaptureResult {
 				streamRef.current = null;
 			});
 
-			streamRef.current = audioOnlyStream;
-			setStream(audioOnlyStream);
+			// 元のストリームをそのまま使用（音声トラックが含まれている）
+			streamRef.current = mediaStream;
+			setStream(mediaStream);
 			setStatus("capturing");
 
-			return audioOnlyStream;
+			return mediaStream;
 		} catch (err) {
 			// エラーハンドリング
 			if (err instanceof Error) {

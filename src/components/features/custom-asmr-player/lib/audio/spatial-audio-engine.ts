@@ -123,7 +123,7 @@ export function createMediaStreamSource(
 export function connectAudioGraph(nodes: SpatialAudioNodes): void {
 	if (!nodes.source) return;
 
-	// ノードを接続
+	// ノードを接続: Source -> Panner -> Gain -> Destination
 	nodes.source.connect(nodes.panner);
 	nodes.panner.connect(nodes.gain);
 	nodes.gain.connect(nodes.context.destination);
