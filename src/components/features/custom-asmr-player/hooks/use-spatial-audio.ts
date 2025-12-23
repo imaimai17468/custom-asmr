@@ -1,5 +1,3 @@
-"use client";
-
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	closeAudioContext,
@@ -18,7 +16,7 @@ import {
 	setListenerPosition,
 	updateGain,
 	updateSourcePosition,
-} from "@/lib/audio/spatial-audio-engine";
+} from "../lib/audio/spatial-audio-engine";
 
 // エンジンの状態
 export type SpatialAudioStatus =

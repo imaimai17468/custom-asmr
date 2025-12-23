@@ -11,9 +11,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
-import type { SpatialAudioStatus } from "@/hooks/use-spatial-audio";
-import type { CaptureStatus } from "@/hooks/use-tab-audio-capture";
 import { cn } from "@/lib/utils";
+import type { SpatialAudioStatus } from "../hooks/use-spatial-audio";
+import type { CaptureStatus } from "../hooks/use-tab-audio-capture";
 
 interface AudioControlsProps {
 	// キャプチャ状態

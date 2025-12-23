@@ -2,9 +2,9 @@
 
 import { AlertCircle } from "lucide-react";
 import { useCallback, useState } from "react";
-import { useSpatialAudio } from "@/hooks/use-spatial-audio";
-import { useTabAudioCapture } from "@/hooks/use-tab-audio-capture";
 import { AudioControls } from "./audio-controls/AudioControls";
+import { useSpatialAudio } from "./hooks/use-spatial-audio";
+import { useTabAudioCapture } from "./hooks/use-tab-audio-capture";
 import { PositionPad } from "./position-pad/PositionPad";
 import { YouTubePlayer } from "./youtube-player/YouTubePlayer";
 
