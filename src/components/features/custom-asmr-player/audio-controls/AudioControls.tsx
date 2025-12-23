@@ -197,9 +197,9 @@ export function AudioControls({
 				<div className="space-y-2 border-t pt-4 text-muted-foreground text-xs">
 					<p className="font-medium">使い方:</p>
 					<ol className="list-inside list-decimal space-y-1">
-						<li>YouTube動画を読み込んで再生</li>
-						<li>「3D音響を開始」をクリック</li>
-						<li>タブ共有ダイアログで「このタブ」を選択</li>
+						<li>別タブでYouTube動画を開いて再生</li>
+						<li>このタブに戻り「3D音響を開始」をクリック</li>
+						<li>タブ共有ダイアログでYouTubeのタブを選択</li>
 						<li>「タブの音声を共有」にチェック</li>
 						<li>パッドで音源の位置を調整</li>
 					</ol>

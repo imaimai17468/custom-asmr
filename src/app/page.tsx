@@ -69,19 +69,19 @@ export default function Home() {
 						<li className="flex items-start gap-2">
 							<span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-muted-foreground" />
 							<span>
-								タブ共有を許可する際は、「タブの音声を共有」オプションを有効にしてください。
+								別タブでYouTube動画を開き、タブ共有でそのタブを選択してください。
+							</span>
+						</li>
+						<li className="flex items-start gap-2">
+							<span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-muted-foreground" />
+							<span>
+								タブ共有ダイアログで「タブの音声を共有」オプションを有効にしてください。
 							</span>
 						</li>
 						<li className="flex items-start gap-2">
 							<span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-muted-foreground" />
 							<span>
 								音声データはブラウザ内でのみ処理され、外部に送信されることはありません。
-							</span>
-						</li>
-						<li className="flex items-start gap-2">
-							<span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-muted-foreground" />
-							<span>
-								YouTube側の音量は自動的に下げられますが、必要に応じて調整してください。
 							</span>
 						</li>
 					</ul>
