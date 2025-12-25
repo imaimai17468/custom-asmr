@@ -11,6 +11,28 @@ export const metadata: Metadata = {
 	icons: {
 		icon: "/favicon.svg",
 	},
+	openGraph: {
+		title: "Custom ASMR - YouTube 3D空間音響プレイヤー",
+		description:
+			"YouTubeの動画を3D音響に変換。音源の位置を自由にコントロールして、没入感のある体験を。",
+		images: [
+			{
+				url: "/ogp.png",
+				width: 1200,
+				height: 630,
+				alt: "Custom ASMR",
+			},
+		],
+		type: "website",
+		locale: "ja_JP",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Custom ASMR - YouTube 3D空間音響プレイヤー",
+		description:
+			"YouTubeの動画を3D音響に変換。音源の位置を自由にコントロールして、没入感のある体験を。",
+		images: ["/ogp.png"],
+	},
 };
 
 export default function RootLayout({
